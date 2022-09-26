@@ -1,0 +1,25 @@
+# This workflow runs when a new Issue or Pull Request is opened
+name: Open
+
+on:
+    pull_request:
+        types:
+            - opened
+    issues:
+        types:
+            - opened
+            - transferred
+
+# Cancel previous instances of this workflow
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref || github.run_id }}
+    cancel-in-progress: true
+
+jobs:
+    stargaze_checkup:
+        name: Drip Check
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Pass # fails if you didn't pass the drip check
+              uses: uhyo/please-star-first@v1.0.1

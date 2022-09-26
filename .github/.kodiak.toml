@@ -1,0 +1,49 @@
+# Configuration for: https://kodiakhq.com/docs/config-reference
+
+# required field
+version = 1
+
+[merge]
+# By default, Kodiak will only act on PRs that have this label. You can disable
+# this requirement via `merge.require_automerge_label`.
+automerge_label=[]
+# Require that the automerge label (`merge.automerge_label`) be set for Kodiak to merge a PR.
+require_automerge_label = false
+# If a PR's title matches this regex, Kodiak will not merge the PR. This is useful to prevent merging work-in-progress PRs.
+blocking_title_regex = ""
+# Due to limitations with the GitHub API this feature is fundamentally broken
+# and cannot be fixed. Prefer the GitHub branch protection "required reviewers"
+# setting instead.
+#
+# When a user leaves a comment on a PR, GitHub counts that as satisfying a
+# review request, so the PR will be allowed to merge, even though a reviewer was
+# likely just starting a review.
+#
+# See this issue comment for more information:
+# https://github.com/chdsbd/kodiak/issues/153#issuecomment-523057332
+#
+# If you request review from a user, don't merge until that user provides a
+# review, even if the PR is passing all status checks.
+block_on_reviews_requested = true
+# If a PR is passing all checks and is able to be merged, merge it without
+# placing it in the merge queue. This option adds some unfairness where PRs
+# waiting in the queue the longest are not served first.
+prioritize_ready_to_merge = true
+
+[merge.message]
+# By default (`"github_default"`), GitHub uses the title of a PR's first commit for the merge commit title. `"pull_request_title"` uses the PR title for the merge commit.
+title = "pull_request_title"
+# By default (`"github_default"`), GitHub combines the titles of a PR's commits to create the body text of a merge commit. `"pull_request_body"` uses the content of the PR to generate the body content while `"empty"` sets an empty body.
+body = "pull_request_body"
+# Add the PR number to the merge commit title. This setting replicates GitHub's behavior of automatically adding the PR number to the title of merges created through the UI. This option only applies when `merge.message.title` does not equal `"github_default"`.
+include_pr_number = true
+# Control the text used in the merge commit. The GitHub default is markdown, but `"plain_text"` or `"html"` can be used to render the pull request body as text or HTML. This option only applies when `merge.message.body = "pull_request_body"`.
+body_type = "plain_text"
+# If a PR includes commits authored by other users, add those users as coauthors to the pull request
+include_coauthors = true
+
+[update]
+# When enabled, Kodiak will only update PRs that have an automerge label (configured via `merge.automerge_label`). When disable, Kodiak will update any PR.
+require_automerge_label = false
+# When a pull request's author matches this, Kodiak will never update the pull request, unless update.autoupdate_label is applied to the pull request.
+ignored_usernames = ["dependabot", "renovate"]

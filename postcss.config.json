@@ -1,0 +1,15 @@
+{
+	"plugins": {
+		"autoprefixer": {},
+		"cssnano": {
+			"preset": "advanced"
+		},
+		"postcss-fail-on-warn": {},
+		"postcss-flexbugs-fixes": {},
+		"postcss-import": {},
+		"postcss-preset-env": {
+			"autoprefixer": false,
+			"stage": 2
+		}
+	}
+}

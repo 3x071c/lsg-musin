@@ -1,0 +1,22 @@
+{
+	"allowCompoundWords": true,
+	"flagWords": [],
+	"ignorePaths": [".git", ".*ignore"],
+	"import": ["@cspell/dict-de-de/cspell-ext.json"],
+	"language": "en,de",
+	"useGitignore": true,
+	"words": [
+		"airbnb",
+		"astro",
+		"bezier",
+		"dessant",
+		"esbenp",
+		"Homic",
+		"Lucida",
+		"Menlo",
+		"musin",
+		"necrobumps",
+		"tsbuildinfo",
+		"uhyo"
+	]
+}

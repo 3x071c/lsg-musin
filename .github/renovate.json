@@ -1,0 +1,37 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"dependencyDashboard": true,
+	"dependencyDashboardAutoclose": true,
+	"dependencyDashboardLabels": ["neverstale", "dependencies"],
+	"dependencyDashboardTitle": "Dependency Dashboard (Renovate)",
+	"extends": ["group:recommended", "group:monorepos"],
+	"labels": ["dependencies"],
+	"lockFileMaintenance": {
+		"enabled": true
+	},
+	"packageRules": [
+		{
+			"extends": ["schedule:daily"],
+			"groupName": "all non-major dependencies",
+			"matchUpdateTypes": ["patch", "minor"]
+		},
+		{
+			"matchDepTypes": ["devDependencies"],
+			"prPriority": -1
+		},
+		{
+			"groupName": "secretlint",
+			"matchPackageNames": ["secretlint"],
+			"matchPackagePrefixes": ["@secretlint/"]
+		},
+		{
+			"groupName": "typescript-eslint",
+			"matchPackagePrefixes": ["@typescript-eslint/"]
+		}
+	],
+	"prCreation": "not-pending",
+	"prNotPendingHours": 1,
+	"rangeStrategy": "auto",
+	"stabilityDays": 7,
+	"timezone": "Europe/Berlin"
+}

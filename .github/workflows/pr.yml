@@ -1,0 +1,25 @@
+# This workflow runs on Pull Request updates
+name: PR
+
+on: pull_request
+
+# Cancel previous instances of this workflow (per PR)
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.number }}
+    cancel-in-progress: true
+
+jobs:
+    pr_ref:
+        name: Trunk-based development PR check
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Get Information
+              id: branch-info
+              uses: tj-actions/branch-names@v5.2
+            - name: Source Branch is not trunk
+              if: steps.branch-info.outputs.head_ref_branch == 'trunk'
+              run: exit 2
+            - name: Target Branch is trunk
+              if: steps.branch-info.outputs.base_ref_branch != 'trunk'
+              run: exit 3

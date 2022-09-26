@@ -1,0 +1,24 @@
+# This workflow runs when an Issue or Pull Request is opened again
+name: Reopen
+
+on:
+    pull_request:
+        types:
+            - reopened
+    issues:
+        types:
+            - reopened
+
+# Cancel previous instances of this workflow
+concurrency:
+    group: ${{ github.workflow }}-${{ github.head_ref || github.ref || github.run_id }}
+    cancel-in-progress: true
+
+jobs:
+    reopen_checks:
+        name: Gimme! Gimme! Gimme! (A Star After Midnight)
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: uwu
+              uses: uhyo/please-star-first@v1.0.1

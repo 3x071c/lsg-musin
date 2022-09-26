@@ -1,0 +1,113 @@
+{
+	"name": "lsg-musin",
+	"version": "0.0.0",
+	"description": "The Louise-Schroeder-Gymnasium's homepage",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/3x071c/lsg-musin"
+	},
+	"homepage": "https://lsg.musin.de",
+	"bugs": {
+		"url": "https://github.com/3x071c/lsg-musin/issues"
+	},
+	"author": {
+		"email": "dev@3x071c.com",
+		"name": "Victor Homic",
+		"url": "https://3x071c.com"
+	},
+	"license": "AGPL-3.0-or-later",
+	"private": true,
+	"engines": {
+		"node": ">= 16"
+	},
+	"os": [
+		"linux",
+		"darwin"
+	],
+	"scripts": {
+		"astro": "astro",
+		"astro:build": "astro build",
+		"astro:dev": "astro dev",
+		"astro:preview": "astro preview",
+		"astro:start": "astro start",
+		"build": "cross-env NODE_ENV=production run-s clean generate astro:build",
+		"check": "tsc --noEmit",
+		"clean": "run-s \"clean:*\"",
+		"clean:1": "",
+		"cspell:individual": "cspell --dot",
+		"cspell:report": "npm run cspell:individual -- \".**/**\" \".**\" \"**\"",
+		"dev": "cross-env NODE_ENV=development run-s clean generate astro:dev",
+		"eslint:fix": "npm run eslint:template -- --fix .",
+		"eslint:individual": "npm run eslint:template -- --fix",
+		"eslint:report": "npm run eslint:template -- --max-warnings 0 .",
+		"eslint:template": "eslint --cache --report-unused-disable-directives --no-error-on-unmatched-pattern --ext .astro,.tsx,.ts,.jsx,.js,.mjs,.cjs --ignore-path .gitignore",
+		"fix": "run-s prettier:fix eslint:fix secretlint:report cspell:report",
+		"generate": "",
+		"lint": "run-s prettier:report eslint:report secretlint:report cspell:report",
+		"new": "run-s clean generate",
+		"preinstall": "npx --yes only-allow npm",
+		"prepare": "husky install",
+		"prettier:fix": "npm run prettier:individual -- .",
+		"prettier:individual": "npm run prettier:template -- --write",
+		"prettier:report": "npm run prettier:template -- --check .",
+		"prettier:template": "prettier --plugin-search-dir=. --ignore-unknown --ignore-path .gitignore",
+		"prod": "cross-env NODE_ENV=production run-s build start",
+		"secretlint:individual": "secretlint --secretlintignore .gitignore",
+		"secretlint:report": "npm run secretlint:individual -- \".\"",
+		"start": "cross-env NODE_ENV=production run-s astro:start"
+	},
+	"dependencies": {
+		"astro": "1.3.0"
+	},
+	"devDependencies": {
+		"@cspell/dict-de-de": "2.1.1",
+		"@secretlint/secretlint-rule-preset-recommend": "5.2.4",
+		"@types/eslint": "8.4.6",
+		"@types/node": "18.7.22",
+		"@typescript-eslint/eslint-plugin": "5.38.0",
+		"@typescript-eslint/parser": "5.38.0",
+		"autoprefixer": "10.4.12",
+		"browserslist": "4.21.4",
+		"cross-env": "7.0.3",
+		"cspell": "6.10.1",
+		"cssnano": "5.1.13",
+		"cssnano-preset-advanced": "5.3.8",
+		"eslint": "8.24.0",
+		"eslint-config-airbnb-base": "15.0.0",
+		"eslint-config-airbnb-typescript": "17.0.0",
+		"eslint-config-prettier": "8.5.0",
+		"eslint-plugin-astro": "0.19.0",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-prettier": "4.2.1",
+		"husky": "8.0.1",
+		"lint-staged": "13.0.3",
+		"npm-run-all": "4.1.5",
+		"only-allow": "1.1.1",
+		"postcss": "8.4.16",
+		"postcss-fail-on-warn": "0.2.1",
+		"postcss-flexbugs-fixes": "5.0.2",
+		"postcss-import": "15.0.0",
+		"postcss-preset-env": "7.8.2",
+		"postcss-syntax": "0.36.2",
+		"prettier": "2.7.1",
+		"prettier-plugin-astro": "0.5.4",
+		"prettier-plugin-pkg": "0.17.1",
+		"prettier-plugin-prisma": "4.2.0",
+		"prettier-plugin-sort-json": "0.0.3",
+		"rimraf": "3.0.2",
+		"secretlint": "5.2.4",
+		"typescript": "4.8.3"
+	},
+	"sideEffects": false,
+	"browserslist": [
+		"defaults"
+	],
+	"lint-staged": {
+		"*": [
+			"npm run prettier:individual",
+			"npm run secretlint:individual",
+			"npm run cspell:individual"
+		],
+		"*.{astro,tsx,ts,jsx,js,mjs,cjs}": "npm run eslint:individual"
+	}
+}
