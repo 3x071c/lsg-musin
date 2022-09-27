@@ -27,6 +27,7 @@
 	"scripts": {
 		"astro": "astro",
 		"astro:build": "astro build",
+		"astro:check": "astro check",
 		"astro:dev": "astro dev",
 		"astro:preview": "astro preview",
 		"astro:start": "astro start",
@@ -41,9 +42,9 @@
 		"eslint:individual": "npm run eslint:template -- --fix",
 		"eslint:report": "npm run eslint:template -- --max-warnings 0 .",
 		"eslint:template": "eslint --cache --report-unused-disable-directives --no-error-on-unmatched-pattern --ext .astro,.tsx,.ts,.jsx,.js,.mjs,.cjs --ignore-path .gitignore",
-		"fix": "run-s prettier:fix eslint:fix secretlint:report cspell:report",
+		"fix": "run-s prettier:fix eslint:fix secretlint:report cspell:report astro:check",
 		"generate": "",
-		"lint": "run-s prettier:report eslint:report secretlint:report cspell:report",
+		"lint": "run-s prettier:report eslint:report secretlint:report cspell:report astro:check",
 		"new": "run-s clean generate",
 		"preinstall": "npx --yes only-allow npm",
 		"prepare": "husky install",
@@ -54,10 +55,16 @@
 		"prod": "cross-env NODE_ENV=production run-s build start",
 		"secretlint:individual": "secretlint --secretlintignore .gitignore",
 		"secretlint:report": "npm run secretlint:individual -- \".\"",
-		"start": "cross-env NODE_ENV=production run-s astro:start"
+		"start": "cross-env NODE_ENV=production run-s astro:preview"
 	},
 	"dependencies": {
-		"astro": "1.3.0"
+		"@astrojs/partytown": "1.0.0",
+		"@picocss/pico": "^1.5.5",
+		"astro": "1.3.0",
+		"astro-compressor": "0.1.2",
+		"astro-html-minifier": "0.2.0",
+		"astro-icon": "0.7.3",
+		"astro-imagetools": "0.6.11"
 	},
 	"devDependencies": {
 		"@cspell/dict-de-de": "2.1.1",
