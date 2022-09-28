@@ -106,6 +106,16 @@
 		"secretlint": "5.2.4",
 		"typescript": "4.8.4"
 	},
+	"overrides": {
+		"file-type": "< 17.0.0 || >= 17.1.3",
+		"netlify-cms-core": {
+			"ajv": "8.11.0"
+		},
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"trim": "1.0.1",
+		"uuid": "9.0.0"
+	},
 	"sideEffects": false,
 	"browserslist": [
 		"defaults"
