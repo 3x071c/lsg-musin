@@ -1,5 +1,6 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"commitMessageAction": "Bump",
 	"dependencyDashboard": true,
 	"dependencyDashboardAutoclose": true,
 	"dependencyDashboardLabels": ["neverstale", "dependencies"],

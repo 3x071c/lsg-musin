@@ -18,7 +18,7 @@ jobs:
         name: Drip Check
         runs-on: ubuntu-latest
         timeout-minutes: 10
-        if: (!contains(fromJson('["renovate[bot]"]'), github.event.issue.user.login))
+        if: (!contains(fromJson('["dependabot[bot]", "renovate[bot]"]'), github.event.issue.user.login))
         steps:
             - name: Gimme! Gimme! Gimme! (A Star After Midnight) # closes if you didn't pass the drip check
               uses: uhyo/please-star-first@v1.0.1

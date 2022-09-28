@@ -30,6 +30,11 @@ block_on_reviews_requested = true
 # waiting in the queue the longest are not served first.
 prioritize_ready_to_merge = true
 
+[merge.automerge_dependencies]
+# only auto merge non-major automated dependency updates
+versions = ["minor", "patch"]
+usernames = ["dependabot", "renovate"]
+
 [merge.message]
 # By default (`"github_default"`), GitHub uses the title of a PR's first commit for the merge commit title. `"pull_request_title"` uses the PR title for the merge commit.
 title = "pull_request_title"
@@ -46,4 +51,4 @@ include_coauthors = true
 # When enabled, Kodiak will only update PRs that have an automerge label (configured via `merge.automerge_label`). When disable, Kodiak will update any PR.
 require_automerge_label = false
 # When a pull request's author matches this, Kodiak will never update the pull request, unless update.autoupdate_label is applied to the pull request.
-ignored_usernames = ["renovate"]
+ignored_usernames = ["dependabot", "renovate"]
