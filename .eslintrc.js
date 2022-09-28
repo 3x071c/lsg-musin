@@ -4,7 +4,7 @@
 const config = {
 	env: {
 		browser: true,
-		es2021: true,
+		es2022: true,
 		node: true,
 	},
 	extends: [
@@ -18,10 +18,11 @@ const config = {
 			extends: [
 				"plugin:@typescript-eslint/recommended",
 				"plugin:@typescript-eslint/recommended-requiring-type-checking",
+				"plugin:@typescript-eslint/strict",
 				"airbnb-typescript/base",
 				"plugin:prettier/recommended",
 			],
-			files: ["*.{tsx,ts}"],
+			files: ["*.{astro,tsx,ts}"],
 			parserOptions: {
 				ecmaFeatures: {
 					impliedStrict: true,
@@ -104,6 +105,17 @@ const config = {
 		"require-await": "error" /* Prevent unnecessary async functions */,
 		"sort-keys": "warn" /* sort object keys */,
 		"sort-vars": "warn" /* sort variable declarations */,
+	},
+	settings: {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".tsx", ".ts"],
+			"astro-eslint-parser": [".astro"],
+		},
+		"import/resolver": {
+			typescript: {
+				alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code
+			},
+		},
 	},
 };
 module.exports = config;

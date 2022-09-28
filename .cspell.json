@@ -7,8 +7,8 @@
 	"useGitignore": true,
 	"words": [
 		"airbnb",
-		"astrojs",
 		"astro",
+		"astrojs",
 		"bezier",
 		"dessant",
 		"esbenp",
@@ -17,6 +17,7 @@
 		"Menlo",
 		"musin",
 		"necrobumps",
+		"netlify",
 		"pico",
 		"picocss",
 		"tsbuildinfo",

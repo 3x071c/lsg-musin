@@ -1,7 +1,7 @@
 ---
 import "@picocss/pico/css/pico.min.css";
 
-const { title } = Astro.props;
+const { title } = Astro.props as Props;
 
 export interface Props {
 	title?: string;
