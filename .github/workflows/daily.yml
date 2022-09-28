@@ -1,4 +1,4 @@
-# This workflow runs every day on a schedule
+# This workflow is scheduled once a day
 name: Daily
 
 on:
@@ -13,22 +13,40 @@ concurrency:
 
 jobs:
     cron_reaction:
-        name: Search for Reactions
+        name: Reaction Remover
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:
-            - name: Remove reaction comments
+            - name: Right Back Where We Started From
               uses: dessant/reaction-comments@v2.2.0
     cron_lock:
-        name: Lock threads
+        name: Thread Locker
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:
-            - name: Lock on inactivity # Prevent "necrobumps"
+            - name: Eye of The Tiger # Prevent "necrobumps"
               uses: dessant/lock-threads@v3.0.0
               with:
                   issue-inactive-days: 7
+                  exclude-any-issue-labels: dependencies
                   add-issue-labels: lock
-                  issue-lock-reason: resolved
                   pr-inactive-days: 7
                   add-pr-labels: lock
+    cron_stale:
+        name: Stale
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Keep the Faith
+              uses: actions/stale@v6.0.0
+              id: stale
+              with:
+                  days-before-stale: 30
+                  days-before-pr-stale: 7
+                  days-before-close: 7
+                  stale-issue-message: This issue is stale because it has been open for 30 days with no activity. Remove the stale label or comment, else this will be closed automatically in 7 days.
+                  stale-pr-message: This PR is stale because it has been open for 7 days with no activity. Remove the stale label or comment, else this will be closed automatically in 7 days.
+                  stale-issue-label: stale
+                  stale-pr-label: stale
+                  exempt-issue-labels: neverstale,dependencies
+                  exempt-pr-labels: neverstale,dependencies

@@ -1,4 +1,4 @@
-# This workflow runs "integration tests", to make sure everything's working fine before accidentally introducing bad code or a bug into the production website
+# This workflow runs some tests to make sure everything's fine before introducing bad code or a bug into the production website
 name: Continuous Integration
 
 on: push
@@ -11,7 +11,7 @@ concurrency:
 jobs:
     lint:
         name: Lint # This "lints" our entire project, making sure the code is correct, conforms to our style and isn't poorly written
-        runs-on: ubuntu-latest # This used to be a matrix test on different platforms
+        runs-on: ubuntu-latest
         timeout-minutes: 15
         steps:
             - name: Checkout

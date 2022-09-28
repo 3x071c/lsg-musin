@@ -1,14 +1,12 @@
-# This workflow runs when a new Issue or Pull Request is opened
-name: Open
+# This workflow makes sure that only stargazers can litter the repo with issues
+name: Issue opened
 
 on:
-    pull_request:
-        types:
-            - opened
     issues:
         types:
             - opened
             - transferred
+            - reopened
 
 # Cancel previous instances of this workflow
 concurrency:
@@ -16,10 +14,11 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    stargaze_checkup:
+    drip_check:
         name: Drip Check
         runs-on: ubuntu-latest
         timeout-minutes: 10
+        if: (!contains(fromJson('["renovate[bot]"]'), github.event.issue.user.login))
         steps:
-            - name: Pass # fails if you didn't pass the drip check
+            - name: Gimme! Gimme! Gimme! (A Star After Midnight) # closes if you didn't pass the drip check
               uses: uhyo/please-star-first@v1.0.1

@@ -9,8 +9,8 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    pr_ref:
-        name: Trunk-based development PR check
+    pr_tbd:
+        name: Trunk-Based Development™
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:

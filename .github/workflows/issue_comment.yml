@@ -1,5 +1,5 @@
-# This workflow runs whenever somebody comments on an issue
-name: Comment
+# This workflow runs for every new issue comment
+name: Issue comment
 
 on: issue_comment
 
@@ -9,10 +9,10 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-    reaction_comment:
-        name: Reaction
+    reaction_comment: # Remove reaction comments
+        name: Reaction comment
         runs-on: ubuntu-latest
         timeout-minutes: 10
         steps:
-            - name: Remove # These tend to introduce spam
+            - name: Another One Bites The Dust # These tend to introduce spam
               uses: dessant/reaction-comments@v2.2.0
