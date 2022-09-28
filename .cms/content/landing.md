@@ -1,4 +1,4 @@
 ---
 title: Startseite Titel
-ticker: Ticker Inhalt
+ticker: Ticker Inhalt (editiert)
 ---
