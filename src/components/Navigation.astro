@@ -1,0 +1,13 @@
+---
+const { brand } = Astro.props as Props;
+
+export interface Props {
+	brand: string;
+}
+---
+
+<nav class="container-fluid">
+	<ul>
+		<li><a href="/" class="contrast"><strong>{brand}</strong></a></li>
+	</ul>
+</nav>

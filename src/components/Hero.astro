@@ -1,0 +1,25 @@
+---
+const { heading, subheading } = Astro.props as Props;
+
+export interface Props {
+	heading: string;
+	subheading: string;
+}
+---
+
+<header class="container">
+	<hgroup>
+		<h1>{heading}</h1>
+		<h2><mark>{subheading}</mark></h2>
+	</hgroup>
+</header>
+
+<style>
+	header {
+		padding: 3rem 0;
+	}
+	h1 {
+		line-height: normal;
+		margin-bottom: calc(var(--spacing) * 0.25) !important;
+	}
+</style>

@@ -1,0 +1,12 @@
+<div class="grid">
+	<section><slot /></section>
+	<slot name="aside" />
+</div>
+
+<style>
+	@media (min-width: 992px) {
+		.grid {
+			grid-template-columns: auto 25% !important;
+		}
+	}
+</style>

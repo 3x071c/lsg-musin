@@ -1,0 +1,48 @@
+---
+const { heading, subheading, events } = Astro.props as Props;
+
+export interface Props {
+	heading: string;
+	subheading: string;
+	events: string[];
+}
+---
+
+<article>
+	<header>
+		<hgroup>
+			<h3>{heading}</h3>
+			<h4>{subheading}</h4>
+		</hgroup>
+	</header>
+	<table role="grid">
+		<colgroup>
+			<col width="100%" />
+			<col width="0%" />
+		</colgroup>
+		<tbody>
+			{
+				events.map((event) => (
+					<tr>
+						<th scope="row">{event}</th>
+						<td>
+							<a href="/events">&rsaquo;</a>
+						</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</article>
+
+<style>
+	th,
+	td {
+		white-space: nowrap;
+	}
+	th {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 1px;
+	}
+</style>

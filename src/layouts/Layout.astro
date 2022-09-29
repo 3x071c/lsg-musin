@@ -1,5 +1,6 @@
 ---
 import "@picocss/pico/css/pico.min.css";
+import Footer from "src/components/Footer.astro";
 
 const { title } = Astro.props as Props;
 
@@ -14,9 +15,10 @@ export interface Props {
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>LSG{title && ` | ${title}`}</title>
+		<title>{title && `${title} | `}LSG</title>
 	</head>
 	<body>
 		<slot />
+		<Footer />
 	</body>
 </html>

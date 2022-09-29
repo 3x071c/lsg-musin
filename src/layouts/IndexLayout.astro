@@ -1,0 +1,55 @@
+---
+import src from "src/assets/hero_dark.jpg";
+import AsideGrid from "src/components/AsideGrid.astro";
+import Events from "src/components/Events.astro";
+import Hero from "src/components/Hero.astro";
+import Main from "src/components/Main.astro";
+import Navigation from "src/components/Navigation.astro";
+import Layout from "./Layout.astro";
+
+const { title } = Astro.props as Props;
+
+export interface Props {
+	title?: string;
+}
+---
+
+<Layout title={title}>
+	<div class="hero" data-theme="dark">
+		<Navigation brand="LSG" />
+		<Hero
+			heading="Louise-Schroeder-Gymnasium"
+			subheading="Städt. naturwissenschaftlich-technologisches und sprachliches Gymnasium in München 🍺"
+		/>
+	</div>
+	<Main>
+		<AsideGrid>
+			<slot />
+			<aside slot="aside">
+				<Events
+					events={[
+						"Wiesn-Tag der SMV - Pausenverkauf",
+						"Q12 Wahl der Jahrgangsstufensprecher*innen in den Kursen Geo/WR",
+						"2022/23 Jgst. 10: Bayer. Mathematik-Test",
+					]}
+					heading="Aktuelles"
+					subheading="Termine einsehen"
+				/>
+			</aside>
+		</AsideGrid>
+	</Main>
+</Layout>
+
+<style>
+	aside {
+		--spacing: 0.5rem;
+		--block-spacing-horizontal: 2rem;
+		--block-spacing-vertical: 2rem;
+	}
+</style>
+
+<style define:vars={{ "hero-src": `url("${src}")` }}>
+	.hero {
+		background: var(--hero-src) center/cover no-repeat;
+	}
+</style>

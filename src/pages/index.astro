@@ -1,11 +1,11 @@
 ---
-import * as page from ".cms/content/landing.md";
-import Layout from "src/layouts/Layout.astro";
+import { Content } from ".cms/content/index.md";
+import Prose from "src/components/Prose.astro";
+import IndexLayout from "src/layouts/IndexLayout.astro";
 ---
 
-<Layout>
-	<main>
-		<h1>Welcome to {page.frontmatter["title"]}</h1>
-		<p>{page.frontmatter["ticker"]}</p>
-	</main>
-</Layout>
+<IndexLayout title={"Homepage"}>
+	<Prose>
+		<Content />
+	</Prose>
+</IndexLayout>

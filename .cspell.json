@@ -1,7 +1,7 @@
 {
 	"allowCompoundWords": true,
 	"flagWords": [],
-	"ignorePaths": [".git", ".*ignore"],
+	"ignorePaths": [".git", ".*ignore", ".cms"],
 	"import": ["@cspell/dict-de-de/cspell-ext.json"],
 	"language": "en,de",
 	"useGitignore": true,
@@ -21,6 +21,13 @@
 		"pico",
 		"picocss",
 		"tsbuildinfo",
-		"uhyo"
+		"uhyo",
+		"hgroup",
+		"tbody",
+		"rsaquo",
+		"Städt",
+		"Wiesn",
+		"Jahrgangsstufensprecher",
+		"Jgst"
 	]
 }
