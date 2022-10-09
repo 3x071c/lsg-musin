@@ -15,14 +15,14 @@ jobs:
         timeout-minutes: 15
         steps:
             - name: Checkout
-              uses: actions/checkout@v3.0.0
+              uses: actions/checkout@v3.1.0
             - name: Setup
-              uses: actions/setup-node@v3.0.0
+              uses: actions/setup-node@v3.5.0
               with:
                   node-version: 16 # Use the latest LTS release
                   cache: npm
             - name: Install
-              uses: nick-fields/retry@v2.6.0 # Retry npm installation when an http download fails (often due to rate limiting)
+              uses: nick-fields/retry@v2.8.1 # Retry npm installation when an http download fails (often due to rate limiting)
               with:
                   timeout_minutes: 5
                   max_attempts: 3
@@ -39,14 +39,14 @@ jobs:
         timeout-minutes: 15
         steps:
             - name: Checkout
-              uses: actions/checkout@v3.0.0
+              uses: actions/checkout@v3.1.0
             - name: Setup
-              uses: actions/setup-node@v3.0.0
+              uses: actions/setup-node@v3.5.0
               with:
                   node-version: 16 # Use the latest LTS release
                   cache: npm
             - name: Install
-              uses: nick-fields/retry@v2.6.0 # Retry npm installation when an http download fails (often due to rate limiting)
+              uses: nick-fields/retry@v2.8.1 # Retry npm installation when an http download fails (often due to rate limiting)
               with:
                   timeout_minutes: 5
                   max_attempts: 3
